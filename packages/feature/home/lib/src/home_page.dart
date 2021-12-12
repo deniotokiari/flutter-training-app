@@ -52,16 +52,25 @@ class HomePage extends StatelessWidget {
                         child: ScrollSnapList(
                           itemCount: idle.cards.length,
                           onItemFocus: (int) {},
+                          duration: 200,
                           itemSize: size,
-                          dynamicItemSize: true,
-                          dynamicSizeEquation: (distance) {
-                            return 1 - min(distance.abs() / 500, 0.05);
-                          },
+                          dynamicItemSize: false,
                           itemBuilder: (context, index) {
+                            final card = idle.cards[index];
+
                             return CardPage(
-                              index: index + 1,
-                              card: idle.cards[index],
+                              exercises: card.exercises,
+                              progress: card.getProgress(),
+                              index: index,
                               size: size,
+                              onRemove: () => context.read<HomeBloc>().add(HomeEvent.remove(index)),
+                              onExerciseCountTap: (exerciseIndex, countIndex) {
+                                context.read<HomeBloc>().add(HomeEvent.toggleExerciseCount(
+                                      index,
+                                      exerciseIndex,
+                                      countIndex,
+                                    ));
+                              },
                             );
                           },
                         ),

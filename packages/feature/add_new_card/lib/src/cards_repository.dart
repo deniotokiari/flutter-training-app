@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:add_new_card/add_new_card.dart';
+import 'package:common/common.dart';
 
 import 'card.dart';
 import 'exercise.dart';
@@ -43,7 +44,7 @@ class CardsRepository {
         Count(value: 4, done: Random().nextBool()),
         Count(value: 3, done: Random().nextBool()),
       ]),
-    ]),
+    ], Random().nextInt(kCardMaxProgress) + 1),
   ];
 
   Future<void> add(Card card) async {
@@ -56,5 +57,13 @@ class CardsRepository {
 
   Future<void> remove(Card card) async {
     _cards.remove(card);
+  }
+
+  Future<void> removeAtIndex(int index) async {
+    _cards.removeAt(index);
+  }
+
+  Future<void> addAtIndex(Card card, int index) async {
+    _cards.insert(index, card);
   }
 }

@@ -28,17 +28,20 @@ class AddNewCardBloc extends Bloc<AddNewCardEvent, AddNewCardState> {
       if (items == null) {
         emit(AddNewCardState.saved(null));
       } else {
-        emit(AddNewCardState.saved(Card(items
-            .map((e) => Exercise(
-                  e.title.value,
-                  e.counts
-                      .map((c) => Count(
-                            value: c.value,
-                            done: false,
-                          ))
-                      .toList(),
-                ))
-            .toList())));
+        emit(AddNewCardState.saved(Card(
+          items
+              .map((e) => Exercise(
+                    e.title.value,
+                    e.counts
+                        .map((c) => Count(
+                              value: c.value,
+                              done: false,
+                            ))
+                        .toList(),
+                  ))
+              .toList(),
+          0,
+        )));
       }
     });
     on<AddNewCardEventAdd>((event, emit) {

@@ -1,17 +1,16 @@
-import 'package:add_new_card/add_new_card.dart' as c;
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 
 class CardProgressPage extends StatelessWidget {
-  final c.Card card;
+  final Pair<int, int> progress;
 
   const CardProgressPage({
-    required this.card,
+    required this.progress,
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final progress = card.getProgress();
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,

@@ -1,3 +1,5 @@
+import 'package:common/common.dart';
+
 import 'count.dart';
 
 class Exercise {
@@ -7,12 +9,14 @@ class Exercise {
   Exercise(this.title, this.counts);
 
   factory Exercise.empty() {
-    return Exercise('', [
-      Count.empty(),
-      Count.empty(),
-      Count.empty(),
-      Count.empty(),
-      Count.empty(),
-    ]);
+    return Exercise('', () {
+      final result = <Count>[];
+
+      for (var i = 0; i < kExerciseMacCount; i++) {
+        result.add(Count.empty());
+      }
+
+      return result;
+    }());
   }
 }

@@ -8,7 +8,13 @@ part 'home_event.freezed.dart';
 class HomeEvent with _$HomeEvent {
   factory HomeEvent.init() = HomeEventInit;
 
-  factory HomeEvent.remove(Card card) = HomeEventRemove;
+  factory HomeEvent.remove(int index) = HomeEventRemove;
 
   factory HomeEvent.add(Card card) = HomeEventAdd;
+
+  factory HomeEvent.toggleExerciseCount(
+    int cardIndex,
+    int exerciseIndex,
+    int countIndex,
+  ) = HomeEventToggleExerciseCount;
 }

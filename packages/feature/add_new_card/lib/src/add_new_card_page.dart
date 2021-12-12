@@ -26,7 +26,8 @@ class AddNewCardPage extends StatelessWidget {
                 padding: const EdgeInsets.all(10.0),
                 children: [
                   BlocConsumer<AddNewCardBloc, AddNewCardState>(
-                    builder: (context, state) => Column(
+                    builder: (context, state) {
+                      return Column(
                       children: state.mapOrNull(
                             idle: (idle) => idle.data
                                 .map((e) => ExercisePage(
@@ -37,7 +38,8 @@ class AddNewCardPage extends StatelessWidget {
                                 .toList(),
                           ) ??
                           [],
-                    ),
+                    );
+                    },
                     listener: (context, state) {
                       state.mapOrNull(
                         saved: (saved) => Navigator.of(context).pop(saved.card),

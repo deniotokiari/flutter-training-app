@@ -9,4 +9,6 @@ class HomeEvent with _$HomeEvent {
   factory HomeEvent.init() = HomeEventInit;
 
   factory HomeEvent.remove(Card card) = HomeEventRemove;
+
+  factory HomeEvent.add(Card card) = HomeEventAdd;
 }

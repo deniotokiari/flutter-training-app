@@ -10,12 +10,23 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<HomeEventInit>((event, emit) async {
       emit(HomeState.idle(await _cardsRepository.getAll()));
     });
-    on<HomeEventRemove>((event, emit) async{
+    on<HomeEventRemove>((event, emit) async {
       await _cardsRepository.remove(event.card);
+
+      emit(HomeState.idle(await _cardsRepository.getAll()));
+    });
+    on<HomeEventAdd>((event, emit) async {
+      await _cardsRepository.add(event.card);
 
       emit(HomeState.idle(await _cardsRepository.getAll()));
     });
 
     add(HomeEvent.init());
+  }
+
+  Future<Card?> get lastCard async {
+    final cards = await _cardsRepository.getAll();
+
+    return cards.isEmpty ? null : cards.last;
   }
 }

@@ -26,6 +26,12 @@ class _$HomeEventTearOff {
       card,
     );
   }
+
+  HomeEventAdd add(Card card) {
+    return HomeEventAdd(
+      card,
+    );
+  }
 }
 
 /// @nodoc
@@ -37,18 +43,21 @@ mixin _$HomeEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function(Card card) remove,
+    required TResult Function(Card card) add,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? init,
     TResult Function(Card card)? remove,
+    TResult Function(Card card)? add,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function(Card card)? remove,
+    TResult Function(Card card)? add,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -56,18 +65,21 @@ mixin _$HomeEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(HomeEventInit value) init,
     required TResult Function(HomeEventRemove value) remove,
+    required TResult Function(HomeEventAdd value) add,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(HomeEventInit value)? init,
     TResult Function(HomeEventRemove value)? remove,
+    TResult Function(HomeEventAdd value)? add,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(HomeEventInit value)? init,
     TResult Function(HomeEventRemove value)? remove,
+    TResult Function(HomeEventAdd value)? add,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -136,6 +148,7 @@ class _$HomeEventInit with DiagnosticableTreeMixin implements HomeEventInit {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function(Card card) remove,
+    required TResult Function(Card card) add,
   }) {
     return init();
   }
@@ -145,6 +158,7 @@ class _$HomeEventInit with DiagnosticableTreeMixin implements HomeEventInit {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? init,
     TResult Function(Card card)? remove,
+    TResult Function(Card card)? add,
   }) {
     return init?.call();
   }
@@ -154,6 +168,7 @@ class _$HomeEventInit with DiagnosticableTreeMixin implements HomeEventInit {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function(Card card)? remove,
+    TResult Function(Card card)? add,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -167,6 +182,7 @@ class _$HomeEventInit with DiagnosticableTreeMixin implements HomeEventInit {
   TResult map<TResult extends Object?>({
     required TResult Function(HomeEventInit value) init,
     required TResult Function(HomeEventRemove value) remove,
+    required TResult Function(HomeEventAdd value) add,
   }) {
     return init(this);
   }
@@ -176,6 +192,7 @@ class _$HomeEventInit with DiagnosticableTreeMixin implements HomeEventInit {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(HomeEventInit value)? init,
     TResult Function(HomeEventRemove value)? remove,
+    TResult Function(HomeEventAdd value)? add,
   }) {
     return init?.call(this);
   }
@@ -185,6 +202,7 @@ class _$HomeEventInit with DiagnosticableTreeMixin implements HomeEventInit {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(HomeEventInit value)? init,
     TResult Function(HomeEventRemove value)? remove,
+    TResult Function(HomeEventAdd value)? add,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -273,6 +291,7 @@ class _$HomeEventRemove
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function(Card card) remove,
+    required TResult Function(Card card) add,
   }) {
     return remove(card);
   }
@@ -282,6 +301,7 @@ class _$HomeEventRemove
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? init,
     TResult Function(Card card)? remove,
+    TResult Function(Card card)? add,
   }) {
     return remove?.call(card);
   }
@@ -291,6 +311,7 @@ class _$HomeEventRemove
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function(Card card)? remove,
+    TResult Function(Card card)? add,
     required TResult orElse(),
   }) {
     if (remove != null) {
@@ -304,6 +325,7 @@ class _$HomeEventRemove
   TResult map<TResult extends Object?>({
     required TResult Function(HomeEventInit value) init,
     required TResult Function(HomeEventRemove value) remove,
+    required TResult Function(HomeEventAdd value) add,
   }) {
     return remove(this);
   }
@@ -313,6 +335,7 @@ class _$HomeEventRemove
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(HomeEventInit value)? init,
     TResult Function(HomeEventRemove value)? remove,
+    TResult Function(HomeEventAdd value)? add,
   }) {
     return remove?.call(this);
   }
@@ -322,6 +345,7 @@ class _$HomeEventRemove
   TResult maybeMap<TResult extends Object?>({
     TResult Function(HomeEventInit value)? init,
     TResult Function(HomeEventRemove value)? remove,
+    TResult Function(HomeEventAdd value)? add,
     required TResult orElse(),
   }) {
     if (remove != null) {
@@ -337,5 +361,151 @@ abstract class HomeEventRemove implements HomeEvent {
   Card get card;
   @JsonKey(ignore: true)
   $HomeEventRemoveCopyWith<HomeEventRemove> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $HomeEventAddCopyWith<$Res> {
+  factory $HomeEventAddCopyWith(
+          HomeEventAdd value, $Res Function(HomeEventAdd) then) =
+      _$HomeEventAddCopyWithImpl<$Res>;
+  $Res call({Card card});
+}
+
+/// @nodoc
+class _$HomeEventAddCopyWithImpl<$Res> extends _$HomeEventCopyWithImpl<$Res>
+    implements $HomeEventAddCopyWith<$Res> {
+  _$HomeEventAddCopyWithImpl(
+      HomeEventAdd _value, $Res Function(HomeEventAdd) _then)
+      : super(_value, (v) => _then(v as HomeEventAdd));
+
+  @override
+  HomeEventAdd get _value => super._value as HomeEventAdd;
+
+  @override
+  $Res call({
+    Object? card = freezed,
+  }) {
+    return _then(HomeEventAdd(
+      card == freezed
+          ? _value.card
+          : card // ignore: cast_nullable_to_non_nullable
+              as Card,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$HomeEventAdd with DiagnosticableTreeMixin implements HomeEventAdd {
+  _$HomeEventAdd(this.card);
+
+  @override
+  final Card card;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'HomeEvent.add(card: $card)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'HomeEvent.add'))
+      ..add(DiagnosticsProperty('card', card));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is HomeEventAdd &&
+            (identical(other.card, card) || other.card == card));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, card);
+
+  @JsonKey(ignore: true)
+  @override
+  $HomeEventAddCopyWith<HomeEventAdd> get copyWith =>
+      _$HomeEventAddCopyWithImpl<HomeEventAdd>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function(Card card) remove,
+    required TResult Function(Card card) add,
+  }) {
+    return add(card);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function(Card card)? remove,
+    TResult Function(Card card)? add,
+  }) {
+    return add?.call(card);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function(Card card)? remove,
+    TResult Function(Card card)? add,
+    required TResult orElse(),
+  }) {
+    if (add != null) {
+      return add(card);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(HomeEventInit value) init,
+    required TResult Function(HomeEventRemove value) remove,
+    required TResult Function(HomeEventAdd value) add,
+  }) {
+    return add(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(HomeEventInit value)? init,
+    TResult Function(HomeEventRemove value)? remove,
+    TResult Function(HomeEventAdd value)? add,
+  }) {
+    return add?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(HomeEventInit value)? init,
+    TResult Function(HomeEventRemove value)? remove,
+    TResult Function(HomeEventAdd value)? add,
+    required TResult orElse(),
+  }) {
+    if (add != null) {
+      return add(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class HomeEventAdd implements HomeEvent {
+  factory HomeEventAdd(Card card) = _$HomeEventAdd;
+
+  Card get card;
+  @JsonKey(ignore: true)
+  $HomeEventAddCopyWith<HomeEventAdd> get copyWith =>
       throw _privateConstructorUsedError;
 }

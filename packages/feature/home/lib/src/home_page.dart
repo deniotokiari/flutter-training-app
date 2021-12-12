@@ -1,15 +1,16 @@
 import 'dart:math';
 import 'dart:ui';
 
+import 'package:add_new_card/add_new_card.dart' as c;
 import 'package:common/common.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:home/src/card_page.dart';
 import 'package:home/src/home_event.dart';
 import 'package:home/src/home_state.dart';
 import 'package:scroll_snap_list/scroll_snap_list.dart';
 
+import 'card_page.dart';
 import 'home_bloc.dart';
 
 class HomePage extends StatelessWidget {
@@ -29,7 +30,11 @@ class HomePage extends StatelessWidget {
                     child: ElevatedButton(
                       onPressed: () async {
                         await Navigator.of(context).pushNamed('/add_new_card').then((value) {
-                          context.read<HomeBloc>().add(HomeEvent.init());
+                          final c.Card? card = castOrNull(value);
+
+                          if (card != null) {
+                            context.read<HomeBloc>().add(HomeEvent.add(card));
+                          }
                         });
                       },
                       child: const Text('ADD NEW CARD'),
@@ -65,8 +70,20 @@ class HomePage extends StatelessWidget {
                         margin: const EdgeInsets.only(top: 100.0),
                         child: ElevatedButton(
                           onPressed: () async {
-                            await Navigator.of(context).pushNamed('/add_new_card').then((value) {
-                              context.read<HomeBloc>().add(HomeEvent.init());
+                            await Navigator.of(context)
+                                .pushNamed(
+                              '/add_new_card',
+                              arguments: await context
+                                  .read<HomeBloc>()
+                                  .lastCard
+                                  .then((value) => value?.exercises),
+                            )
+                                .then((value) {
+                              final c.Card? card = castOrNull(value);
+
+                              if (card != null) {
+                                context.read<HomeBloc>().add(HomeEvent.add(card));
+                              }
                             });
                           },
                           child: const Text('ADD NEW CARD'),

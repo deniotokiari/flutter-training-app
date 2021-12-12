@@ -42,21 +42,22 @@ class AddNewCardBloc extends Bloc<AddNewCardEvent, AddNewCardState> {
       }
     });
     on<AddNewCardEventAdd>((event, emit) {
-      final items = state.mapOrNull(idle: (idle) => idle.data);
+      final items = state.mapOrNull(idle: (idle) => idle.data)?.toList();
 
       if (items != null) {
         final last = items.isEmpty ? null : items.last;
+        final counts = last?.counts.map((e) => ValueNotifier(e.value)).toList() ??
+            Exercise.empty().counts.map((e) => ValueNotifier(e.value)).toList();
 
-        AddNewCardState.idle(items
+        emit(AddNewCardState.idle(items
           ..add(ExerciseData(
             ValueNotifier('EXERCISE ${items.length}'),
-            last?.counts.map((e) => ValueNotifier(e.value)).toList() ??
-                Exercise.empty().counts.map((e) => ValueNotifier(e.value)).toList(),
-          )));
+            counts,
+          ))));
       }
     });
     on<AddNewCardEventRemove>((event, emit) {
-      final items = state.mapOrNull(idle: (idle) => idle.data) ?? [];
+      final items = state.mapOrNull(idle: (idle) => idle.data)?.toList() ?? [];
 
       if (items.isNotEmpty) {
         items.removeAt(event.index);

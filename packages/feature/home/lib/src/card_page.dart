@@ -80,11 +80,12 @@ class CardPage extends StatelessWidget {
                       ...e.counts.map((c) => Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
-                              '$c',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .subtitle1
-                                  ?.copyWith(backgroundColor: Theme.of(context).primaryColor),
+                              '${c.value}',
+                              style: Theme.of(context).textTheme.subtitle1?.copyWith(
+                                    backgroundColor: c.done
+                                        ? Theme.of(context).primaryColor
+                                        : Theme.of(context).primaryColorLight,
+                                  ),
                             ),
                           )),
                     ],
@@ -102,9 +103,5 @@ class CardPage extends StatelessWidget {
         ],
       ),
     );
-  }
-
-  Color? _getCountColor(int current, List<int> counts, List<bool> done) {
-
   }
 }

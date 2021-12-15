@@ -94,7 +94,7 @@ class CardPage extends StatelessWidget {
                         SizedBox(
                           width: size * 0.35,
                           child: Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
                             child: Text(
                               e.title,
                               style: Theme.of(context).textTheme.subtitle1,
@@ -109,7 +109,7 @@ class CardPage extends StatelessWidget {
                                   }
                                 : null,
                             child: Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.all(4.0),
                               child: Container(
                                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
                                 decoration: c.done

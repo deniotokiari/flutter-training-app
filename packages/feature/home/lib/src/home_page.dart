@@ -1,11 +1,9 @@
-import 'dart:math';
 import 'dart:ui';
 
 import 'package:add_new_card/add_new_card.dart' as c;
 import 'package:common/common.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:home/src/home_event.dart';
 import 'package:home/src/home_state.dart';
 import 'package:scroll_snap_list/scroll_snap_list.dart';
@@ -51,7 +49,7 @@ class HomePage extends StatelessWidget {
                         height: size,
                         child: ScrollSnapList(
                           itemCount: idle.cards.length,
-                          onItemFocus: (int) {},
+                          onItemFocus: (_) {},
                           duration: 200,
                           itemSize: size,
                           dynamicItemSize: false,

@@ -1,7 +1,6 @@
 import 'package:add_new_card/add_new_card.dart';
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:home/home.dart';
 
@@ -18,7 +17,7 @@ class AppLaunchPage extends StatelessWidget {
         BlocBuilder<AppLaunchBloc, AppLaunchState>(
           builder: (context, _) => MaterialApp(
             title: _kAppTitle,
-            theme: ThemeData(primarySwatch: Colors.blue),
+            theme: ThemeData(primarySwatch: Colors.indigo),
             routes: {
               '/': (_) => const HomePage(),
               '/add_new_card': (_) => const AddNewCardPage(),

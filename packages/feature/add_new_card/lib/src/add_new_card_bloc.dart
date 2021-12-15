@@ -4,8 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'add_new_card_event.dart';
 import 'add_new_card_state.dart';
-import 'card.dart';
-import 'exercise.dart';
 import 'exercise_data.dart';
 
 class AddNewCardBloc extends Bloc<AddNewCardEvent, AddNewCardState> {

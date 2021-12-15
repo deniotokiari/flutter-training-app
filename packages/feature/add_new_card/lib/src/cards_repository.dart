@@ -3,9 +3,6 @@ import 'dart:math';
 import 'package:add_new_card/add_new_card.dart';
 import 'package:common/common.dart';
 
-import 'card.dart';
-import 'exercise.dart';
-
 class CardsRepository {
   final _cards = <Card>[
     Card([

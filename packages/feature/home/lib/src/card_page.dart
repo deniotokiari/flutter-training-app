@@ -27,7 +27,7 @@ class CardPage extends StatelessWidget {
     return Container(
       height: size,
       width: size,
-      padding: const EdgeInsets.symmetric(horizontal: 15.0),
+      padding: const EdgeInsets.symmetric(horizontal: 10.0),
       child: Container(
         decoration: BoxDecoration(border: Border.all(color: Theme.of(context).primaryColor)),
         child: Column(
@@ -53,7 +53,8 @@ class CardPage extends StatelessWidget {
                       decoration: progress.first == progress.second
                           ? const BoxDecoration(
                               image: DecorationImage(
-                                  image: AssetImage('assets/strikethrough.png'), fit: BoxFit.fitWidth),
+                                  image: AssetImage('assets/strikethrough.png'),
+                                  fit: BoxFit.fitWidth),
                             )
                           : null,
                       child: Text(
@@ -91,7 +92,7 @@ class CardPage extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         SizedBox(
-                          width: size * 0.2,
+                          width: size * 0.35,
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
@@ -102,13 +103,15 @@ class CardPage extends StatelessWidget {
                         ),
                         ...e.counts.map(
                           (c) => InkWell(
-                            onTap: () {
-                              onExerciseCountTap(exercises.indexOf(e), e.counts.indexOf(c));
-                            },
+                            onTap: progress.first != progress.second
+                                ? () {
+                                    onExerciseCountTap(exercises.indexOf(e), e.counts.indexOf(c));
+                                  }
+                                : null,
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Container(
-                                padding: const EdgeInsets.symmetric(horizontal: 8),
+                                padding: const EdgeInsets.symmetric(horizontal: 8.0),
                                 decoration: c.done
                                     ? const BoxDecoration(
                                         image: DecorationImage(

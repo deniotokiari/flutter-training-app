@@ -51,10 +51,29 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           ? (card.progress + 1 >= kCardMaxProgress ? kCardMaxProgress : card.progress + 1)
           : card.progress;
 
-      final resultCard = Card(exercises, progress);
+      if (progress > card.progress && progress != kCardMaxProgress) {
+        final resultCard = Card(
+            exercises
+                .map((e) => Exercise(
+                      e.title,
+                      e.counts
+                          .map((c) => Count(
+                                value: c.value,
+                                done: false,
+                              ))
+                          .toList(growable: false),
+                    ))
+                .toList(growable: false),
+            progress);
 
-      await _cardsRepository.removeAtIndex(event.cardIndex);
-      await _cardsRepository.addAtIndex(resultCard, event.cardIndex);
+        await _cardsRepository.removeAtIndex(event.cardIndex);
+        await _cardsRepository.addAtIndex(resultCard, event.cardIndex);
+      } else {
+        final resultCard = Card(exercises, progress);
+
+        await _cardsRepository.removeAtIndex(event.cardIndex);
+        await _cardsRepository.addAtIndex(resultCard, event.cardIndex);
+      }
 
       emit(HomeState.idle(await _cardsRepository.getAll()));
     });

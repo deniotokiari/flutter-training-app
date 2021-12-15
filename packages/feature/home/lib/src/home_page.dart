@@ -39,7 +39,8 @@ class HomePage extends StatelessWidget {
                     ),
                   );
                 } else {
-                  double size = window.physicalSize.width * 0.3;
+                  final double size = (window.physicalSize.width / window.devicePixelRatio) * 0.9;
+                  final index = idle.cards.lastIndexWhere((element) => element.isDone).toDouble();
 
                   return Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -48,6 +49,8 @@ class HomePage extends StatelessWidget {
                       SizedBox(
                         height: size,
                         child: ScrollSnapList(
+                          initialIndex:
+                              index == -1 ? 0 : (index + 1 < idle.cards.length ? index + 1 : index),
                           itemCount: idle.cards.length,
                           onItemFocus: (_) {},
                           duration: 200,
